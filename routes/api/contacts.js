@@ -38,9 +38,8 @@ router.get("/:contactId", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const { error } = contactAddSchema.validate(req.body);
-    console.log(error);
     if (error) {
-      throw createError(400);
+      throw createError(400, (message = "missing required name field"));
     }
     const result = await contacts.addContact(req.body);
     res.status(201).json(result);
@@ -50,11 +49,30 @@ router.post("/", async (req, res, next) => {
 });
 
 router.delete("/:contactId", async (req, res, next) => {
-  res.json({ message: "template message" });
+  try {
+    const { contactId } = req.params;
+    const result = await contacts.removeContact(contactId);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.put("/:contactId", async (req, res, next) => {
-  res.json({ message: "template message" });
+  try {
+    const { error } = contactAddSchema.validate(req.body);
+    if (error) {
+      throw createError(400, (message = "missing fields"));
+    }
+    const { contactId } = req.params;
+    const result = await contacts.updateContact(contactId, req.body);
+    if (!result) {
+      throw createError(404);
+    }
+
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;
