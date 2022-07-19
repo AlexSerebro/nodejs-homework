@@ -13,6 +13,6 @@ router.post("/", cntrWrapper(controlers.addContact));
 
 // router.delete("/:contactId", cntrWrapper(controlers.removeContact));
 
-// router.put("/:contactId", cntrWrapper(controlers.updateContact));
+router.put("/:contactId", cntrWrapper(controlers.updateContact));
 
 module.exports = router;
