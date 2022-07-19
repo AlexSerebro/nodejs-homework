@@ -1,3 +1,4 @@
+
 const { Contact } = require("../../models");
 const { createError } = require("../../helpers");
 const { contactAddSchema } = require("../../models");
@@ -16,6 +17,5 @@ const addContact = async (req, res) => {
       result,
     },
   });
-};
 
 module.exports = addContact;

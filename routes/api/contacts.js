@@ -1,9 +1,12 @@
 const express = require("express");
 
+
 const { cntrWrapper } = require("../../helpers");
+
 const controlers = require("../../controlers/contacts");
 
 const router = express.Router();
+
 
 router.get("/", cntrWrapper(controlers.listContacts));
 
@@ -16,5 +19,6 @@ router.delete("/:contactId", cntrWrapper(controlers.removeContact));
 router.put("/:contactId", cntrWrapper(controlers.updateContact));
 
 router.patch("/:contactId/favorite", cntrWrapper(controlers.updateFavorite));
+
 
 module.exports = router;

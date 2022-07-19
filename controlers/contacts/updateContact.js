@@ -1,3 +1,4 @@
+
 const { Contact } = require("../../models");
 const { createError } = require("../../helpers");
 const { contactAddSchema } = require("../../models");
@@ -20,6 +21,7 @@ const updateContact = async (req, res) => {
       result,
     },
   });
+
 };
 
 module.exports = updateContact;
