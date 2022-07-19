@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { validation, cntrWrapper } = require("../../helpers");
+const { cntrWrapper } = require("../../helpers");
 const controlers = require("../../controlers/contacts");
 
 const router = express.Router();
