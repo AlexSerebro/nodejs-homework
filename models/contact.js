@@ -30,7 +30,12 @@ const contactAddSchema = Joi.object({
   favorite: Joi.bool().required(),
 });
 
+const validateSchema = Joi.object({
+  favorite: Joi.bool().required(),
+});
+
 module.exports = {
   Contact,
   contactAddSchema,
+  validateSchema,
 };
