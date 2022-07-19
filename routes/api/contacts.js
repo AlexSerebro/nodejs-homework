@@ -11,7 +11,7 @@ router.get("/:contactId", cntrWrapper(controlers.getContactById));
 
 router.post("/", cntrWrapper(controlers.addContact));
 
-// router.delete("/:contactId", cntrWrapper(controlers.removeContact));
+router.delete("/:contactId", cntrWrapper(controlers.removeContact));
 
 router.put("/:contactId", cntrWrapper(controlers.updateContact));
 
