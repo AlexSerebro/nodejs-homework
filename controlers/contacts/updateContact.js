@@ -1,13 +1,12 @@
-
 const { Contact } = require("../../models");
-const { createError } = require("../../helpers");
-const { contactAddSchema } = require("../../models");
+// const { createError } = require("../../helpers");
+// const { contactAddSchema } = require("../../models/contact");
 
 const updateContact = async (req, res) => {
-  const { error } = contactAddSchema.validate(req.body);
-  if (error) {
-    throw createError(400, (message = "missing fields"));
-  }
+  // const { error } = contactAddSchema.validate(req.body);
+  // if (error) {
+  //   throw createError(400, (message = "missing fields"));
+  // }
   const { contactId } = req.params;
   const result = await Contact.findByIdAndUpdate(contactId, req.body);
   if (!result) {
@@ -21,7 +20,6 @@ const updateContact = async (req, res) => {
       result,
     },
   });
-
 };
 
 module.exports = updateContact;
