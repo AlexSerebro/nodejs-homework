@@ -3,17 +3,18 @@ const express = require("express");
 const { cntrWrapper } = require("../../helpers");
 
 const controlers = require("../../controlers/contacts");
-const { validation } = require("../../midlwares");
+const { auth, validation } = require("../../midlwares");
 const { contactAddSchema, validateSchema } = require("../../models/contact");
 
 const router = express.Router();
 
-router.get("/", cntrWrapper(controlers.listContacts));
+router.get("/", auth, cntrWrapper(controlers.listContacts));
 
 router.get("/:contactId", cntrWrapper(controlers.getContactById));
 
 router.post(
   "/",
+  auth,
   validation(contactAddSchema),
   cntrWrapper(controlers.addContact)
 );
