@@ -9,9 +9,10 @@ const { joiRegisterSchema, joiLoginSchema } = require("../../models/user");
 const router = express.Router();
 
 router.post(
-  "/register",
+  "/signup",
   validation(joiRegisterSchema),
   cntrWrapper(auth.register)
 );
+router.post("/login", validation(joiLoginSchema), cntrWrapper(auth.login));
 
 module.exports = router;
