@@ -7,5 +7,5 @@ const users = require("../../controlers/users");
 const router = express.Router();
 
 router.get("/current", auth, cntrWrapper(users.getCurrent));
-
+router.patch("/avatars", auth, cntrWrapper(users.updateAvatar));
 module.exports = router;
