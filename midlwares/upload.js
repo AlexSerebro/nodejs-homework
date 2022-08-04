@@ -4,10 +4,10 @@ const path = require("path");
 const tempDir = path.join(__dirname, "../", "temp");
 
 const multerConfig = multer.diskStorage({
-  destination: (req, res, cb) => {
+  destination: (req, file, cb) => {
     cb(null, tempDir);
   },
-  filename: (req, res, cb) => {
+  filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
   limits: {
